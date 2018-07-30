@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="scripts/angular.min.js"></script>
+	<!-- <script src="scripts/angular-route.min.js"></script> -->
+</head>
+<body ng-app="myApp" ><!-- признак того, что могут встретиться angular --> 
+	<div ng-include="'my.htm'">
+		
+	</div><!-- в данном диве будет выведен файл -->
+	<input type="text" name="" ng-model="name"><!-- связывает поле ввода по имени переменной -->
+	<p>{{name}}</p>
+	<p class="newp">{{25*6}}</p>
+	<div ng-controller="myCtrl">
+	<input type="text" ng-model="myCol" style="background-color: {{myCol}}" name="">
+	<ul ng-repeat="x in spisok">
+			<li>{{x}}</li>
+		</ul>
+	</div>
+	<div ng-controller="myCtrl1">
+		<ul ng-repeat="x in spisok | uppercase">
+			<li>{{x.name+ ','+ x.familiya}}</li>
+		</ul>
+		<p>{{price | currency}}</p>
+		<input type="text" ng-model="test" name="">
+		<ul ng-repeat="x in names | filter: test">
+			<li>{{x}}</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		let app = angular.module("myApp",[]);
+		app.controller("myCtrl", function($scope){
+			$scope.myCol= "blue";
+			$scope.spisok = ["vasya","petya","Joe"];
+		});
+		app.controller("myCtrl1", function($scope){
+			$scope.spisok = [
+				{
+				name:"Vasya",
+				familiya:"Vasiliev"
+				},
+				{
+				name:"Kolya",
+				familiya:"Nikolaev"
+				},
+				{
+				name:"Dima",
+				familiya:"Dmitriev"
+				}];
+
+			$scope.price = 200;
+			$scope.names = [
+					        'Jani',
+					        'Carl',
+					        'Margareth',
+					        'Hege',
+					        'Joe',
+					        'Gustav',
+					        'Birgit',
+					        'Mary',
+					        'Kai'
+					    	];
+		});
+
+	</script>	
+</body>
+</html>

@@ -1,0 +1,17 @@
+.ng-scope {
+	list-style: none;
+
+}
+.ng-scope a {
+	text-decoration: none;
+	color: red;
+	font-size: 20px;
+}
+
+.ng-binding {
+	color: green;
+	font-size: 20px;
+}
+.newp{
+	color: #606;
+}
